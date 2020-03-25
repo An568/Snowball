@@ -25,7 +25,7 @@ const request = require('request');
 
 
 
-const token = 'NjY4ODIwNDQ3NTc5NzM0MDE2.Xkv5-Q.nxqrVaHNJIA4wpap7t5JMyXKdkI';
+const token = process.env.token;
 
 const PREFIX = '!';
 
