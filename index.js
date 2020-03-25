@@ -221,6 +221,25 @@ bot.on('message', message => {
             message.channel.send("https://tenor.com/view/dog-watermelon-eating-watermelon-gif-12945716")
             break;
         case 'help':
+            if(args[1] === '2'){
+                const embed12 = new Discord.RichEmbed()
+                .setTitle('Commands list:')
+                .addField('!headpat:', 'Pat the dog!')
+                .addField('!whatisthisserversname?:', "Knows the OP server's name")
+                .addField('!rate:', 'Doggy rating machine!')
+                .addField('!getavatar:', "Get someone's avatar!")
+                .addField('!whoami?:', 'Type this command when your OP brain is nerfed')
+                .addField('!say:', 'Say something!')
+                .addField('!pat:', 'Pat!')
+                .addField('!hug:', 'Show them how much you love them')
+                .addField('!kiss:', 'Command to kiss someone owo')
+                .addField('!whoisthebestdog?:', 'The best dog in the world will answer you with two woofs')
+                .addField('!amiagoodfriend?', 'If you are a good friend, the dog will respond with thumbs up, but if no, it will respond with thumbs down')
+                .setDescription('Page 2/2')
+                .setColor(0x00ff00)
+                message.channel.send(embed12)
+                break;
+            }
             const embed = new Discord.RichEmbed()
                 .setTitle('Commands list:')
                 .addField('!getnormalkeys :', "In case if you want to type a normal letter but one of your button doesn't let you to type it")
@@ -248,18 +267,8 @@ bot.on('message', message => {
                 .addField('!amiop?:', 'Are you op? Ask the dog!')
                 .addField('!fruits:', 'Generate random fruits!')
                 .addField('!lick:', 'Get licked by the dog')
-                .addField('!headpat:', 'Pat the dog!')
-                .addField('!whatisthisserversname?:', "Knows the OP server's name")
-                .addField('!rate:', 'Doggy rating machine!')
-                .addField('!getavatar:', "Get someone's avatar!")
-                .addField('!whoami?:', 'Type this command when your OP brain is nerfed')
-                .addField('!say:', 'Say something!')
-                .addField('!pat:', 'Pat!')
-                .addField('!hug:', 'Show them how much you love them')
-                .addField('!kiss:', 'Command to kiss someone owo')
-                .addField('!whoisthebestdog?:', 'The best dog in the world will answer you with two woofs')
-                .addField('!amiagoodfriend?', 'If you are a good friend, the dog will respond with thumbs up, but if no, it will respond with thumbs down')
                 .setColor(0x00ff00)
+                .setDescription('Page 1/2')
             message.channel.send(embed);
             break;
         case 'whoisthebestdog?':
