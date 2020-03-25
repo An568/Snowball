@@ -33,6 +33,12 @@ var servers = {};
 
 var age = '4';
 
+let y = process.openStdin()
+y.addListener("data", res => {
+    let x = res.toString().trim().split(/ +/g)
+    bot.channels.get("611338250992353322").send(x.join(" "));
+});
+
 bot.on('ready', () => {
     console.log('This bot is online!');
     bot.user.setStatus("online")
