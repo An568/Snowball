@@ -253,7 +253,7 @@ bot.on('message', message => {
                 .addField('!amiop?:', 'Are you op? Ask the dog!')
                 .addField('!fruits:', 'Generate random fruits!')
                 .addField('!lick:', 'Get licked by the dog')
-                .setColor(0x00ff00)
+                .setColor(0xFF0000)
                 .setDescription('Page 3/3')
                 message.channel.send(embed13)
                 break;
