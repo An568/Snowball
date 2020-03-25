@@ -235,9 +235,27 @@ bot.on('message', message => {
                 .addField('!kiss:', 'Command to kiss someone owo')
                 .addField('!whoisthebestdog?:', 'The best dog in the world will answer you with two woofs')
                 .addField('!amiagoodfriend?', 'If you are a good friend, the dog will respond with thumbs up, but if no, it will respond with thumbs down')
-                .setDescription('Page 2/2')
-                .setColor(0x00ff00)
+                .addField('!puppy:', 'Puppies pictures!')
+                .addField('!kill:', 'A command to kill someone!!!')
+                .addField('!spacedoggo:', 'Space doggo emoji!')
+                .addField('!run:', 'Show you a gif about the dog running')
+                .setDescription('Page 2/3')
+                .setColor(0xff00ff)
                 message.channel.send(embed12)
+                break;
+            }
+            if(args[1] === '3'){
+                const embed13 = new Discord.RichEmbed()
+                .setTitle('Commands list:')
+                .addField('!walk:', 'Walk the dog!')
+                .addField('!ask:', 'Make a poll')
+                .addField('!woof:', 'Try to bark!')
+                .addField('!amiop?:', 'Are you op? Ask the dog!')
+                .addField('!fruits:', 'Generate random fruits!')
+                .addField('!lick:', 'Get licked by the dog')
+                .setColor(0x00ff00)
+                .setDescription('Page 3/3')
+                message.channel.send(embed13)
                 break;
             }
             const embed = new Discord.RichEmbed()
@@ -257,18 +275,8 @@ bot.on('message', message => {
                 .addField('!highfive:', 'Highfive with the dog!')
                 .addField('!whoisthebest?:', 'Ask the dog!')
                 .addField('!joke:', 'Get a joke!')
-                .addField('!puppy:', 'Puppies pictures!')
-                .addField('!kill:', 'A command to kill someone!!!')
-                .addField('!spacedoggo:', 'Space doggo emoji!')
-                .addField('!run:', 'Show you a gif about the dog running')
-                .addField('!walk:', 'Walk the dog!')
-                .addField('!ask:', 'Make a poll')
-                .addField('!woof:', 'Try to bark!')
-                .addField('!amiop?:', 'Are you op? Ask the dog!')
-                .addField('!fruits:', 'Generate random fruits!')
-                .addField('!lick:', 'Get licked by the dog')
                 .setColor(0x00ff00)
-                .setDescription('Page 1/2')
+                .setDescription('Page 1/3')
             message.channel.send(embed);
             break;
         case 'whoisthebestdog?':
