@@ -36,7 +36,7 @@ var age = '4';
 let y = process.openStdin()
 y.addListener("data", res => {
     let x = res.toString().trim().split(/ +/g)
-    bot.channels.get("611338250992353322").send(x.join(" "));
+    bot.channels.get("690059375473197104").send(x.join(" "));
 });
 
 bot.on('ready', () => {
