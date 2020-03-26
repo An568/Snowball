@@ -6,9 +6,6 @@ const client = new Discord.Client();
 
 const cheerio = require('cheerio');
 
-const chooseArr = ["🗻", "📰", "✂"];
-
-
 const Canvas = require('canvas')
 
 const randompuppy = require ('random-puppy');
@@ -186,17 +183,10 @@ bot.on('message', message => {
                 message.channel.send('Woof! You got a bazooka, you tried to shoot a barn, but you know that your accurate is shit so you aimed at a random person, and that hit, that guy is now in the Woof hospital')
                 break;
             }
-            else if(message.author.id === '434933891225223178'){
-                message.channel.send('Woof! You got a bazooka, you tried to shoot Star, but he shot u first so you are now in the Woof hospital')
-                break;
-            }
-            else if(message.author.id === '615908337443405854'){
-                message.channel.send('Woof! You got a bazooka, Star tried to shoot you but your reaction time and your accuracy is very good so you shot the rocket back. Sadly, the rocket was at close range and you shot right at it so it exploded and you are now in the Woof hospital')
-                break;
-            }
-            else{
-                message.channel.send('Woof! Star got a bazooka, he tried to shoot a barn, but he knows that his accurate is shit so you aimed at you, and that hit, you are now in the Woof hospital')
-            }
+            
+            const randomjokes = ['Woof! You got a bazooka, you tried to shoot Star, but he shot u first so you are now in the Woof hospital', 'Woof! You got a bazooka, Star tried to shoot you but your reaction time and your accuracy is very good so you shot the rocket back. Sadly, the rocket was at close range and you shot right at it so it exploded and you are now in the Woof hospital', 'Woof! Star got a bazooka, he tried to shoot a barn, but he knows that his accurate is shit so you aimed at you, and that hit, you are now in the Woof hospital']
+
+            message.channel.send(randomjokes[Math.floor((Math.random () * randomjokes.length))])
             break;
         case 'whatisthisserversname?':
             message.channel.send(`Woof! Woof! This OP server's name is ${message.guild.name}. Woof! Woof!`)
