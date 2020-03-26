@@ -22,7 +22,7 @@ const request = require('request');
 
 
 
-const token = 'NjY4ODIwNDQ3NTc5NzM0MDE2.Xkv5-Q.nxqrVaHNJIA4wpap7t5JMyXKdkI';
+const token = 'NjY4ODIwNDQ3NTc5NzM0MDE2.Xnwxog.lY4II1LJV6OqXunGqtvwbXMKRC0';
 
 const PREFIX = '!';
 
@@ -183,7 +183,7 @@ bot.on('message', message => {
                 message.channel.send('Woof! You got a bazooka, you tried to shoot a barn, but you know that your accurate is shit so you aimed at a random person, and that hit, that guy is now in the Woof hospital')
                 break;
             }
-            
+
             const randomjokes = ['Woof! You got a bazooka, you tried to shoot Star, but he shot u first so you are now in the Woof hospital', 'Woof! You got a bazooka, Star tried to shoot you but your reaction time and your accuracy is very good so you shot the rocket back. Sadly, the rocket was at close range and you shot right at it so it exploded and you are now in the Woof hospital', 'Woof! Star got a bazooka, he tried to shoot a barn, but he knows that his accurate is shit so you aimed at you, and that hit, you are now in the Woof hospital']
 
             message.channel.send(randomjokes[Math.floor((Math.random () * randomjokes.length))])
