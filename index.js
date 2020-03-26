@@ -22,7 +22,7 @@ const request = require('request');
 
 
 
-const token = 'NjY4ODIwNDQ3NTc5NzM0MDE2.Xnw6Jg.w6k4Uaoc5oUxYrdbkaZ8WyUSAOw';
+const token = 'NjY4ODIwNDQ3NTc5NzM0MDE2.Xnw67g.6b6xBbuBgUHN8JN0aGexU5RsHws';
 
 const PREFIX = '!';
 
