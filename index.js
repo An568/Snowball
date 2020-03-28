@@ -22,7 +22,7 @@ const request = require('request');
 
 
 
-const token = proccess.env.token;
+const token = process.env.token;
 
 const PREFIX = '!';
 
