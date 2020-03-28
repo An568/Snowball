@@ -22,6 +22,10 @@ const request = require('request');
 
 const axios = require('axios')
 
+const username = 'ZTMJ6yfBHv63Trwh';
+
+const password = 'EbMujudReZg8eUa7';
+
 const token = process.env.token;
 
 const PREFIX = '!';
