@@ -541,6 +541,9 @@ bot.on('message', message => {
                     request(options, function (error, response) { 
                         if (error) throw new Error(error);
                             var body = JSON.parse(response.body)
+                            const embed14 = new Discord.RichEmbed()
+                            .setImage(body.data.url)
+                            .setColor('RANDOM')
                             message.channel.send(body.data.url)
                     });
                 })
