@@ -9,6 +9,7 @@
   "author": "An568",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.19.2",
     "canvas": "^2.6.1",
     "cheerio": "^1.0.0-rc.3",
     "discord.js": "^11.4.2",
@@ -27,7 +28,6 @@
     "random-puppy": "^1.1.0",
     "request": "^2.88.2",
     "ytdl": "^1.2.0",
-    "ytdl-core": "^1.0.9",
-    "axios": "^0.19.2"
+    "ytdl-core": "^1.0.9"
   }
 }
