@@ -20,7 +20,10 @@ const ytdl = require("ytdl-core");
 
 const request = require('request');
 
-
+const axios = require('axios')
+const request = require('request');
+const username = 'ZTMJ6yfBHv63Trwh';
+const password = 'EbMujudReZg8eUa7';
 
 const token = process.env.token;
 
@@ -512,8 +515,35 @@ bot.on('message', message => {
                 message.channel.send("Woof! Woof! You don't have permission to use this command! Woof! Woof!")
                 break;
             }
-            
-          
+            case 'doggymeme':
+                templates = ['112126428','438680','87743020', '61579', '181913649','102156234']
+                const template = templates[Math.floor(Math.random()*templates.length)]
+                console.log(template)
+                axios.get('https://rest.bman.gg/chat/random').then(response => {
+                    var line1 = response.data[0].message
+                    var line2 = response.data[1].message
+                    var options = {
+                        'method': 'POST',
+                        'url': 'https://api.imgflip.com/caption_image',
+                        'headers': {
+                            'Content-Type': 'application/x-www-form-urlencoded'
+                        },
+                        formData: {
+                            'template_id': template,
+                            'text1': line1,
+                            'text0': line2,
+                            'username': username,
+                            'password': password
+                        }
+                    };
+                    
+                    request(options, function (error, response) { 
+                        if (error) throw new Error(error);
+                            var body = JSON.parse(response.body)
+                            message.channel.send(body.data.url)
+                    });
+                })
+                break;
     }
 });
 
