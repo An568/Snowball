@@ -481,6 +481,7 @@ bot.on('message', message => {
                 message.channel.send("Woof! Woof! You don't have permission to use this command! Woof! Woof!")
                 break;
             }
+            break;
             case 'doggymeme':
                 templates = ['112126428','438680','87743020', '61579', '181913649','102156234']
                 const template = templates[Math.floor(Math.random()*templates.length)]
