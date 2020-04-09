@@ -30,6 +30,8 @@ const token = process.env.token;
 
 const PREFIX = '!';
 
+let xp = require ("./database.json")
+
 var servers = {};
 
 var age = '4';
@@ -58,17 +60,34 @@ bot.on("guildCreate", guild => {
     console.log(`New guild joined: ${guild.name} (id: ${guild.id}). This guild has ${guild.memberCount} members!`);
 })
 
-const applyText = (canvas, text) => {
-	const ctx = canvas.getContext('2d');
+bot.on("message", async message => {
 
-	let fontSize = 70;
-
-	do {
-		ctx.font = `${fontSize -= 10}px sans-serif`;
-	} while (ctx.measureText(text).width > canvas.width - 300);
-
-	return ctx.font;
-};
+    if(message.author.bot) return;
+    if(message.channel.type === "dm") return;
+  
+    let xpAdd = Math.floor(Math.random() * 7) + 8;
+  
+    if(!xp[message.author.id]){
+      xp[message.author.id] = {
+        xp: 0,
+        level: 1
+      };
+    }
+  
+  
+    let curxp = xp[message.author.id].xp;
+    let curlvl = xp[message.author.id].level;
+    let nxtLvl = xp[message.author.id].level * 300;
+    xp[message.author.id].xp =  curxp + xpAdd;
+    if(nxtLvl <= xp[message.author.id].xp){
+      xp[message.author.id].level = curlvl + 1;
+      message.channel.send(`Congratulations ${message.author}, you reached level ${curlvl}! Woof! Woof!`)
+    }
+    fs.writeFile("./database.json", JSON.stringify(xp), (err) => {
+      if(err) console.log(err)
+    });
+  
+  });
 
 bot.on('message', message => {
 
@@ -81,13 +100,12 @@ bot.on('message', message => {
         case 'bark':
             message.channel.send('woof')
             break;
-        case 'whoisthebest?':
-            if(message.author.id === '382217611108286474'){
-            message.channel.send('Woof! Woof! You are! :3')
-            }
-            else{
-                message.channel.send('Woof! Woof! Star is! :3')
-            }
+        case 'level':
+            let curxp = xp[message.author.id].xp;
+            let curlvl = xp[message.author.id].level;
+            let nxtLvlXp = curlvl * 300;
+            let difference = nxtLvlXp - curxp;
+            message.channel.send(`Woof! Woof! Your current level is ${curlvl}, ${difference}XP left until level up!`)
             break;
         case 'say':
             const sayMessage = args.slice(1).join(" ");
@@ -145,27 +163,8 @@ bot.on('message', message => {
             const randomnumber = Math.floor((Math.random() * 100))
             message.channel.send("Hmmmm.....").then((newMessage) => {newMessage.edit("Woof! Woof! Here is your number: " + randomnumber + "! :3")})
             break;
-        case 'joke':
-            if(message.author.id === '382217611108286474'){
-                message.channel.send('Woof! You got a bazooka, you tried to shoot a barn, but you know that your accurate is shit so you aimed at a random person, and that hit, that guy is now in the Woof hospital')
-                break;
-            }
-
-            const randomjokes = ['Woof! You got a bazooka, you tried to shoot Star, but he shot u first so you are now in the Woof hospital', 'Woof! You got a bazooka, Star tried to shoot you but your reaction time and your accuracy is very good so you shot the rocket back. Sadly, the rocket was at close range and you shot right at it so it exploded and you are now in the Woof hospital', 'Woof! Star got a bazooka, he tried to shoot a barn, but he knows that his accurate is shit so you aimed at you, and that hit, you are now in the Woof hospital']
-
-            message.channel.send(randomjokes[Math.floor((Math.random () * randomjokes.length))])
-            break;
-        case 'whatisthisserversname?':
-            message.channel.send(`Woof! Woof! This OP server's name is ${message.guild.name}. Woof! Woof!`)
-            break;
         case 'age':
             message.channel.send("Woof! Woof! I'm " + age + '  :3')
-            break;
-        case 'celebrate':
-            message.channel.send('https://tenor.com/view/goodboi-dog-party-cute-pug-tongue-out-gif-12117903')
-            break;
-        case 'amiop?':
-            message.channel.send("Woof! No, stranger! >:c").then((newMessage) => {newMessage.edit("Woof! It's you, of course you are ;3 Woof! Woof!");});
             break;
         case 'snuggle':
             const attachment = new Attachment('./cuddlepup.png', 'cuddlepup.png')
@@ -179,29 +178,17 @@ bot.on('message', message => {
         case 'spacedoggo':
             message.channel.send("<:spacedoggo:686146619040858122>")
             break;
-
-        case 'feed':
-            message.channel.send("https://tenor.com/view/dog-watermelon-eating-watermelon-gif-12945716")
-            break;
         case 'help':
             if(args[1] === '2'){
                 const embed12 = new Discord.RichEmbed()
                 .setTitle('Commands list:')
-                .addField('!headpat :', 'Pat the dog!')
-                .addField('!whatisthisserversname? :', "Knows the OP server's name")
                 .addField('!rate :', 'Doggy rating machine!')
                 .addField('!getavatar :', "Get someone's avatar!")
-                .addField('!whoami? :', 'Type this command when your OP brain is nerfed')
                 .addField('!say :', 'Say something!')
                 .addField('!pat :', 'Pat!')
                 .addField('!hug :', 'Show them how much you love them')
                 .addField('!kiss :', 'Command to kiss someone owo')
-                .addField('!whoisthebestdog? :', 'The best dog in the world will answer you with two woofs')
-                .addField('!amiagoodfriend? :', 'If you are a good friend, the dog will respond with thumbs up, but if no, it will respond with thumbs down')
-                .addField('!puppy :', 'Puppies pictures!')
                 .addField('!kill :', 'A command to kill someone!!!')
-                .addField('!spacedoggo:', 'Space doggo emoji!')
-                .addField('!run :', 'Show you a gif about the dog running')
                 .setDescription('Page 2/3')
                 .setColor(0xff00ff)
                 message.channel.send(embed12)
@@ -210,12 +197,9 @@ bot.on('message', message => {
             if(args[1] === '3'){
                 const embed13 = new Discord.RichEmbed()
                 .setTitle('Commands list:')
-                .addField('!walk :', 'Walk the dog!')
                 .addField('!ask :', 'Make a poll')
                 .addField('!woof :', 'Try to bark!')
-                .addField('!amiop? :', 'Are you op? Ask the dog!')
                 .addField('!fruits :', 'Generate random fruits!')
-                .addField('!lick :', 'Get licked by the dog')
                 .addField('!doggymeme:', 'Some lame Boring Man command that my friend wants me to add')
                 .setColor(0xFF0000)
                 .setDescription('Page 3/3')
@@ -235,17 +219,10 @@ bot.on('message', message => {
                 .addField('!dps :', 'Dog, paper, scissors!')
                 .addField('!bark :', 'The dog will bark :3')
                 .addField('!help :', 'Show this')
-                .addField('!doggymeme :')
-                .addField('!celebrate :', 'Doggy party!')
-                .addField('!highfive :', 'Highfive with the dog!')
-                .addField('!whoisthebest? :', 'Ask the dog!')
-                .addField('!joke :', 'Get a joke!')
+                .addField('!doggymeme :', 'Some memes about a game called Boring Man - Online Tactical Stickman Combat that my friend(?) wants to add')
                 .setColor(0x00ff00)
                 .setDescription('Page 1/3')
             message.channel.send(embed);
-            break;
-        case 'whoisthebestdog?':
-            message.channel.send('Woof! Woof!')
             break;
         case 'getavatar':
                 if (!message.mentions.users.size) {
@@ -326,20 +303,11 @@ bot.on('message', message => {
 
             message.channel.send(embed10)
             break;
-        case 'run':
-            message.channel.send('https://tenor.com/view/dog-running-coming-doggo-gif-12143874')
-            break;
         case 'getnormalkeys':
             message.channel.send('Woof! Woof! Here are your keys, my friend. qwertyuiopasdfghjklzxcvbnm. Woof! Woof!')
             break;
         case 'getcapitalkeys':
             message.channel.send('Woof! Woof! Here are your keys, my friend. QWERTYUIOPASDFGHJKLZXCVBNM. Woof! Woof!')
-            break;
-        case 'lick':
-            message.channel.send('https://tenor.com/view/window-lick-cute-puppy-dog-gif-16353598')
-            break;
-        case 'headpat':
-            message.channel.send('https://tenor.com/view/king-mirella-doggo-happy-massage-gif-12450202')
             break;
         case 'kill':
             if(!args[1]){
@@ -373,9 +341,6 @@ bot.on('message', message => {
                 message.delete(1000).catch(console.error);
             })
 
-            break;
-        case 'whoami?':
-            message.channel.send(`You silly OP friend, your name is ${message.author.username}. Woof! Woof!`)
             break;
         case 'rate':
             const rates = ["4/10", "5/10", "6/10", "7/10 :3", "8/10 :3", "9/10 :3", "10/10 :3", "11/10 :3"];
@@ -420,15 +385,6 @@ bot.on('message', message => {
             .setDescription("Woof! Woof! You aren't a dog so you can't bark! Woof! Woof!");
      
             message.author.send(embed2);
-            break;
-        case 'walk':
-            message.channel.send('https://tenor.com/view/beaglepuppy-beagle-pup-puppy-dogwalk-gif-9806042')
-            break;
-        case 'amiagoodfriend?':
-            message.react('👍');
-            break;
-        case 'highfive':
-            message.channel.send('https://tenor.com/view/dog-high-five-shiba-inu-puppy-gif-13852681')
             break;
         case 'fruits':
             const fruits = ["🍌", "🍇", "🍉", "🍍", "🍎", "🍏", "🍒", "🍑", "🥭", "🥥", "🦴", "🥎", "⚾"]
