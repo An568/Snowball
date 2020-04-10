@@ -87,7 +87,7 @@ bot.on("message", async message => {
     xp[message.author.id].xp =  curxp + xpAdd;
     if(nxtLvl <= xp[message.author.id].xp){
       xp[message.author.id].level = curlvl + 1;
-      message.channel.send(`Congratulations ${message.author}, you reached level ${curlvl}! Woof! Woof!`)
+      message.channel.send(`Congratulations ${message.author}, you reached level ${curlvl + 1}! Woof! Woof!`)
     }
     fs.writeFile("./database.json", JSON.stringify(xp), (err) => {
       if(err) console.log(err)
