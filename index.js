@@ -6,7 +6,7 @@ const client = new Discord.Client();
 
 const cheerio = require('cheerio');
 
-const Canvas = require('canvas')
+const fsn = require('fs-nextra')
 
 const randompuppy = require ('random-puppy');
 
@@ -20,19 +20,25 @@ const ytdl = require("ytdl-core");
 
 const request = require('request');
 
+const { Canvas } = require("canvas-constructor");
+
+const { resolve, join } = require("path");
+
+const fetch = require("node-fetch");
+
+const imageUrlRegex = /\?size=2048$/g;
+
 const axios = require('axios')
 
 const username = 'ZTMJ6yfBHv63Trwh';
 
 const password = 'EbMujudReZg8eUa7';
 
-const token = process.env.token;
+const token = require('./token.json');
 
 const PREFIX = '!';
 
 let xp = require ("./database.json")
-
-var servers = {};
 
 var age = '4';
 
@@ -89,7 +95,7 @@ bot.on("message", async message => {
   
   });
 
-bot.on('message', message => {
+bot.on('message', async message => {
 
     let args = message.content.substring(PREFIX.length).split(" "); if(message.content.substring(0, PREFIX.length) == PREFIX)
 
@@ -104,8 +110,13 @@ bot.on('message', message => {
             let curxp = xp[message.author.id].xp;
             let curlvl = xp[message.author.id].level;
             let nxtLvlXp = curlvl * 300;
-            let difference = nxtLvlXp - curxp;
-            message.channel.send(`Woof! Woof! Your current level is ${curlvl}, ${difference}XP left until level up!`)
+            const profile = new Discord.RichEmbed()
+            .setTitle(message.author.username)
+            .setThumbnail(message.author.displayAvatarURL)
+            .addField(`Level:`, `${curlvl}`)
+            .addField(`XP:`, `${curxp}/${nxtLvlXp}`)
+            .setColor(0x00ffff)
+            message.channel.send(profile)
             break;
         case 'say':
             const sayMessage = args.slice(1).join(" ");
@@ -473,4 +484,4 @@ bot.on('message', message => {
     }
 });
 
-bot.login(token)
+bot.login(token.token)
