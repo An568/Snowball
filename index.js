@@ -34,7 +34,7 @@ const username = 'ZTMJ6yfBHv63Trwh';
 
 const password = 'EbMujudReZg8eUa7';
 
-const token = require('./token.json');
+const token = process.env.token //require('./token.json');
 
 const PREFIX = '!';
 
@@ -484,4 +484,4 @@ bot.on('message', async message => {
     }
 });
 
-bot.login(token.token)
+bot.login(token)//.token)
