@@ -26,8 +26,6 @@ const { resolve, join } = require("path");
 
 const fetch = require("node-fetch");
 
-const imageUrlRegex = /\?size=2048$/g;
-
 const axios = require('axios')
 
 const username = 'ZTMJ6yfBHv63Trwh';
@@ -66,35 +64,6 @@ bot.on("guildCreate", guild => {
     console.log(`New guild joined: ${guild.name} (id: ${guild.id}). This guild has ${guild.memberCount} members!`);
 })
 
-bot.on("message", async message => {
-
-    if(message.author.bot) return;
-    if(message.channel.type === "dm") return;
-  
-    let xpAdd = Math.floor(Math.random() * 7) + 8;
-  
-    if(!xp[message.author.id]){
-      xp[message.author.id] = {
-        xp: 0,
-        level: 1
-      };
-    }
-  
-  
-    let curxp = xp[message.author.id].xp;
-    let curlvl = xp[message.author.id].level;
-    let nxtLvl = xp[message.author.id].level * 300;
-    xp[message.author.id].xp =  curxp + xpAdd;
-    if(nxtLvl <= xp[message.author.id].xp){
-      xp[message.author.id].level = curlvl + 1;
-      message.channel.send(`Congratulations ${message.author}, you reached level ${curlvl + 1}! Woof! Woof!`)
-    }
-    fs.writeFile("./database.json", JSON.stringify(xp), (err) => {
-      if(err) console.log(err)
-    });
-  
-  });
-
 bot.on('message', async message => {
 
     let args = message.content.substring(PREFIX.length).split(" "); if(message.content.substring(0, PREFIX.length) == PREFIX)
@@ -105,18 +74,6 @@ bot.on('message', async message => {
             break;
         case 'bark':
             message.channel.send('woof')
-            break;
-        case 'level':
-            let curxp = xp[message.author.id].xp;
-            let curlvl = xp[message.author.id].level;
-            let nxtLvlXp = curlvl * 300;
-            const profile = new Discord.RichEmbed()
-            .setTitle(message.author.username)
-            .setThumbnail(message.author.displayAvatarURL)
-            .addField(`Level:`, `${curlvl}`)
-            .addField(`XP:`, `${curxp}/${nxtLvlXp}`)
-            .setColor(0x00ffff)
-            message.channel.send(profile)
             break;
         case 'say':
             const sayMessage = args.slice(1).join(" ");

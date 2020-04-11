@@ -29,6 +29,7 @@
     "opusscript": "0.0.7",
     "pastebin-js": "^1.0.4",
     "path": "^0.12.7",
+    "pg": "^8.0.2",
     "querystring": "^0.2.0",
     "random-puppy": "^1.1.0",
     "request": "^2.88.2",
