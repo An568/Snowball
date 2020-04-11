@@ -36,8 +36,6 @@ const token = process.env.token //require('./token.json');
 
 const PREFIX = '!';
 
-let xp = require ("./database.json")
-
 var age = '4';
 
 let y = process.openStdin()
