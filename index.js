@@ -436,6 +436,24 @@ bot.on('message', async message => {
                     });
                 })
                 break;
+            case 'report':
+                if (!message.mentions.users.size){
+                    return message.channel.send("Command usage: !report ``[member]`` ``[reason]``")
+                    }
+        
+                    const reported = message.mentions.users.first()
+                    const reason = args.slice(2).join(" ");
+                    const report = new Discord.RichEmbed()
+        
+                    .setTitle('Doggy Reporter Machine')
+                    .addField(`Reporter:`, `${message.author}`)
+                    .addField(`Reports:`, `${reported}`)
+                    .addField(`Reason:`, `${reason}`)
+                    .setColor("0xff0000")
+        
+                    message.guild.owner.send(report)
+                    message.channel.send('Report sent!')
+                    break;
     }
 });
 
