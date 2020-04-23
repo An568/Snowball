@@ -159,7 +159,7 @@ bot.on('message', async message => {
                 .addField('!woof :', 'Try to bark!')
                 .addField('!fruits :', 'Generate random fruits!')
                 .addField('!doggymeme :', 'Some lame Boring Man command that my friend wants me to add')
-                .addFiled('!report :', 'Report command')
+                .addField('!report :', 'Report command')
                 .setDescription('Page 2/2')
                 .setColor(0xff00ff)
                 message.channel.send(embed12)
