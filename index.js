@@ -155,22 +155,14 @@ bot.on('message', async message => {
                 .addField('!hug :', 'Show them how much you love them')
                 .addField('!kiss :', 'Command to kiss someone owo')
                 .addField('!kill :', 'A command to kill someone!!!')
-                .setDescription('Page 2/3')
-                .setColor(0xff00ff)
-                message.channel.send(embed12)
-                break;
-            }
-            if(args[1] === '3'){
-                const embed13 = new Discord.RichEmbed()
-                .setTitle('Commands list:')
                 .addField('!ask :', 'Make a poll')
                 .addField('!woof :', 'Try to bark!')
                 .addField('!fruits :', 'Generate random fruits!')
                 .addField('!doggymeme :', 'Some lame Boring Man command that my friend wants me to add')
                 .addFiled('!report :', 'Report command')
-                .setColor(0xFF0000)
-                .setDescription('Page 3/3')
-                message.channel.send(embed13)
+                .setDescription('Page 2/2')
+                .setColor(0xff00ff)
+                message.channel.send(embed12)
                 break;
             }
             const embed = new Discord.RichEmbed()
@@ -188,7 +180,7 @@ bot.on('message', async message => {
                 .addField('!help :', 'Show this')
                 .addField('!doggymeme :', 'Some memes about a game called Boring Man - Online Tactical Stickman Combat that my friend(?) wants to add')
                 .setColor(0x00ff00)
-                .setDescription('Page 1/3')
+                .setDescription('Page 1/2')
             message.channel.send(embed);
             break;
         case 'getavatar':
