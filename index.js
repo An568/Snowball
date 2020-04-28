@@ -439,6 +439,7 @@ bot.on('message', async message => {
                     const report = new Discord.RichEmbed()
         
                     .setTitle('Doggy Reporter Machine')
+                    .addField('Server:', `${message.guild.name}`)
                     .addField(`Reporter:`, `${message.author}`)
                     .addField(`Reports:`, `${reported}`)
                     .addField(`Reason:`, `${reason}`)
