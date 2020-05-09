@@ -32,7 +32,7 @@ const username = 'ZTMJ6yfBHv63Trwh';
 
 const password = 'EbMujudReZg8eUa7';
 
-const token = process.env.token //require('./token.json');
+const token = process.env.token
 
 const PREFIX = '!';
 
@@ -41,7 +41,7 @@ var age = '4';
 let y = process.openStdin()
 y.addListener("data", res => {
     let x = res.toString().trim().split(/ +/g)
-    bot.channels.get("690059375473197104").send(x.join(" "));
+    bot.channels.get("690275742331830374").send(x.join(" "));
 });
 
 bot.on('ready', () => {
@@ -451,4 +451,4 @@ bot.on('message', async message => {
     }
 });
 
-bot.login(token)//.token)
+bot.login(token)
