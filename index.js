@@ -41,13 +41,13 @@ var age = '4';
 let y = process.openStdin()
 y.addListener("data", res => {
     let x = res.toString().trim().split(/ +/g)
-    bot.users.get("382217611108286474").send(x.join(" "));
+    bot.users.get("434933891225223178").send(x.join(" "));
 });
 
 bot.on('ready', () => {
     console.log('This bot is online!');
     bot.user.setStatus("online")
-    bot.user.setActivity("with a bone :3", { type: 'Playing'})
+    bot.user.setActivity("games | dm me :D", { type: 'Playing'})
 })
 
 bot.on("guildBanRemove", guild => {
@@ -64,7 +64,8 @@ bot.on("guildCreate", guild => {
 bot.on('message', async message => {
     let args = message.content.split(" ");
     if(message.channel.type === 'dm'){
-    console.log(args.slice(0).join(" "))
+    console.log(`${message.author.username}(${message.author.id}): ${args.slice(0).join(" ")}`)
+    bot.channels.get("742303465790767182").send(`**${message.author.username}**: ${args.slice(0).join(" ")}`) 
 }
 })
 
