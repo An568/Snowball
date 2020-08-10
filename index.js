@@ -1,4 +1,4 @@
-Discord = require('discord.js');
+const Discord = require('discord.js');
 const { Client, Attachment } = require('discord.js');
 const { RichEmbed } = require('discord.js');
 const bot = new Client();
@@ -41,7 +41,7 @@ var age = '4';
 let y = process.openStdin()
 y.addListener("data", res => {
     let x = res.toString().trim().split(/ +/g)
-    bot.channels.get("690275742331830374").send(x.join(" "));
+    bot.users.get("382217611108286474").send(x.join(" "));
 });
 
 bot.on('ready', () => {
@@ -213,7 +213,7 @@ bot.on('message', async message => {
                 break;
         case 'pat':
             if(!message.mentions.users.size){
-                return message.channel.send('*puts your hand on my head* ;3')
+                return message.channel.send('pat who? ;o')
             }
 
             const user2 = message.mentions.users.first()
