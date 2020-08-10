@@ -65,7 +65,6 @@ bot.on('message', async message => {
     let args = message.content.split(" ");
     if(message.channel.type === 'dm'){
     console.log(args.slice(0).join(" "))
-    bot.users.get("434933891225223178").send(args.slice(0).join(" "))
 }
 })
 
