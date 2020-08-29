@@ -79,6 +79,8 @@ bot.on('message', async message => {
             message.channel.send('pong!')
             break;
         case 'send':
+            const gamer = bot.users.get(`${args[1]}`)
+            if(!gamer) return message.channel.send("Command usage: !send `[users id]` `[messages]`")
             bot.users.get(`${args[1]}`).send(args.slice(2).join(" "))
             break;
         case 'bark':
