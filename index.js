@@ -41,7 +41,8 @@ var age = '4';
 let y = process.openStdin()
 y.addListener("data", res => {
     let x = res.toString().trim().split(/ +/g)
-    bot.users.get("434933891225223178").send(x.join(" "));
+    bot.users.get("382217611108286474").send(x.join(" "));
+    //bot.channels.get("742303465790767182").send(x.join(" "));
 });
 
 bot.on('ready', () => {
@@ -65,7 +66,7 @@ bot.on('message', async message => {
     let args = message.content.split(" ");
     if(message.channel.type === 'dm'){
     console.log(`${message.author.username}(${message.author.id}): ${args.slice(0).join(" ")}`)
-    bot.channels.get("742303465790767182").send(`**${message.author.username}**: ${args.slice(0).join(" ")}`) 
+    bot.channels.get("742303465790767182").send(`**${message.author.username}**(${message.author.id}): ${args.slice(0).join(" ")}`) 
 }
 })
 
@@ -76,6 +77,9 @@ bot.on('message', async message => {
     if(message.content.substring(0, PREFIX.length) == PREFIX) switch (args[0]) {
         case 'ping':
             message.channel.send('pong!')
+            break;
+        case 'send':
+            bot.users.get(`${args[1]}`).send(args.slice(2).join(" "))
             break;
         case 'bark':
             message.channel.send('woof')
@@ -159,6 +163,7 @@ bot.on('message', async message => {
                 .addField('!getavatar :', "Get someone's avatar!")
                 .addField('!say :', 'Say something!')
                 .addField('!pat :', 'Pat!')
+                .addField('!send :', 'only pro gamers can use this command')
                 .addField('!hug :', 'Show them how much you love them')
                 .addField('!kiss :', 'Command to kiss someone owo')
                 .addField('!kill :', 'A command to kill someone!!!')
