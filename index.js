@@ -81,6 +81,7 @@ bot.on('message', async message => {
         case 'send':
             const gamer = bot.users.get(`${args[1]}`)
             if(!gamer) return message.channel.send("Command usage: !send `[users id]` `[messages]`")
+            if(!args[2]) return message.channel.send("What do u want me to send? :o")
             bot.users.get(`${args[1]}`).send(args.slice(2).join(" "))
             break;
         case 'bark':
