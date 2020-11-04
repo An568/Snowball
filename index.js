@@ -32,7 +32,7 @@ const username = 'ZTMJ6yfBHv63Trwh';
 
 const password = 'EbMujudReZg8eUa7';
 
-const token = process.env.token
+const token = process.env.token;
 
 const PREFIX = '!';
 
@@ -329,7 +329,6 @@ bot.on('message', async message => {
             .setColor('RANDOM')
 
             if(!args[1]) return message.channel.send(embed4)
-
             const embed5 = new Discord.RichEmbed()
             .setTitle("Doggy Rating Machine")
             .setDescription("Woof! Woof! I'd give " + ratethings + " a " + rates[rate])
@@ -463,6 +462,18 @@ bot.on('message', async message => {
                     message.guild.owner.send(report)
                     message.channel.send('Report sent!')
                     break;
+            case 'gaminggamer':
+                if(message.author.id === '434933891225223178'){
+                const gaminggamer = new Discord.RichEmbed()
+                .setTitle("gaming gamer")
+                .addField('!setstatus')
+                .addField('!setgame')
+                .addField('!reset')
+                .addField('!gaminggamer')
+                .setColor("RANDOM")
+                message.channel.send(gaminggamer)}
+                message.channel.send("Nu!")
+                break;
     }
 });
 
